@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D5924BEC-E38D-402F-B560-B11E93873126}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GrooveSharp</RootNamespace>
+    <AssemblyName>GrooveSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\GrooveSharp.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\GrooveSharp.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.2.6.3.862\lib\NET40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Configuration">
+      <HintPath>..\packages\Autofac.2.6.3.862\lib\NET40\Autofac.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\GrooveModule.cs" />
+    <Compile Include="DataTransferObjects\AuthenticateUserRequest.cs" />
+    <Compile Include="DataTransferObjects\CreatePlaylistRequest.cs" />
+    <Compile Include="DataTransferObjects\DeletePlaylistRequest.cs" />
+    <Compile Include="DataTransferObjects\SongCollection.cs" />
+    <Compile Include="DataTransferObjects\PlaylistCollection.cs" />
+    <Compile Include="DataTransferObjects\Playlist.cs" />
+    <Compile Include="DataTransferObjects\PlaylistSongsRequest.cs" />
+    <Compile Include="DataTransferObjects\Song.cs" />
+    <Compile Include="DataTransferObjects\User.cs" />
+    <Compile Include="DataTransferObjects\UserPlayListRequest.cs" />
+    <Compile Include="DataTransferObjects\UserPrivacyTokens.cs" />
+    <Compile Include="GrooveConnection.cs" />
+    <Compile Include="Cryptography\HashFactory.cs" />
+    <Compile Include="Cryptography\IHashFactory.cs" />
+    <Compile Include="DataTransferObjects\ComunicationTokenRequest.cs" />
+    <Compile Include="DataTransferObjects\EventResultItem.cs" />
+    <Compile Include="DataTransferObjects\GrooveStream.cs" />
+    <Compile Include="DataTransferObjects\PlaylistResultItem.cs" />
+    <Compile Include="DataTransferObjects\PopularSongsRequest.cs" />
+    <Compile Include="DataTransferObjects\PopularSongsRequestType.cs" />
+    <Compile Include="DataTransferObjects\SearchResultSet.cs" />
+    <Compile Include="DataTransferObjects\SearchType.cs" />
+    <Compile Include="DataTransferObjects\UserResultItem.cs" />
+    <Compile Include="DataTransferObjects\UseSslAttribute.cs" />
+    <Compile Include="DataTransferObjects\ResponseTokenHeader.cs" />
+    <Compile Include="DataTransferObjects\Country.cs" />
+    <Compile Include="DataTransferObjects\DataTransferDictionary.cs" />
+    <Compile Include="DataTransferObjects\Fault.cs" />
+    <Compile Include="DataTransferObjects\RequestToken.cs" />
+    <Compile Include="DataTransferObjects\RequestTokenHeader.cs" />
+    <Compile Include="DataTransferObjects\ResponseToken.cs" />
+    <Compile Include="DataTransferObjects\ResultsFromSearchRequest.cs" />
+    <Compile Include="DataTransferObjects\SearchResult.cs" />
+    <Compile Include="DataTransferObjects\SearchResultItem.cs" />
+    <Compile Include="DataTransferObjects\StreamInfo.cs" />
+    <Compile Include="DataTransferObjects\StreamCommandAttribute.cs" />
+    <Compile Include="DataTransferObjects\StreamKeyFromSongId.cs" />
+    <Compile Include="Exceptions\GrooveException.cs" />
+    <Compile Include="Configuration\GrooveRegistry.cs" />
+    <Compile Include="IGrooveConnection.cs" />
+    <Compile Include="Parser\IParser.cs" />
+    <Compile Include="Parser\JsonParser.cs" />
+    <Compile Include="PlatformExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protocol\AsyncCommandFactory.cs" />
+    <Compile Include="Protocol\Commands\AsyncCommandBase.cs" />
+    <Compile Include="Protocol\Commands\AsyncHandledCommand.cs" />
+    <Compile Include="Protocol\Commands\GetSessionIdAsyncCommand.cs" />
+    <Compile Include="Protocol\Commands\IAsyncCommand.cs" />
+    <Compile Include="Protocol\Commands\DownloadStreamAsyncCommand.cs" />
+    <Compile Include="Protocol\IAsyncCommandFactory.cs" />
+    <Compile Include="Protocol\ISession.cs" />
+    <Compile Include="Protocol\DefaultSession.cs" />
+    <Compile Include="Protocol\Commands\AsyncCommand.cs" />
+    <Compile Include="Protocol\SessionBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
