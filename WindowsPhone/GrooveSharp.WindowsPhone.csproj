@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A94C3BDE-FD76-4601-AF06-CD25EF0D4ADE}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GrooveSharp</RootNamespace>
+    <AssemblyName>GrooveSharp</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\groovesharp\configuration\GrooveModule.cs">
+      <Link>Configuration\GrooveModule.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\cryptography\IHashFactory.cs">
+      <Link>Cryptography\IHashFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\AuthenticateUserRequest.cs">
+      <Link>DataTransferObjects\AuthenticateUserRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\ComunicationTokenRequest.cs">
+      <Link>DataTransferObjects\ComunicationTokenRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\Country.cs">
+      <Link>DataTransferObjects\Country.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\CreatePlaylistRequest.cs">
+      <Link>DataTransferObjects\CreatePlaylistRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\DeletePlaylistRequest.cs">
+      <Link>DataTransferObjects\DeletePlaylistRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\EventResultItem.cs">
+      <Link>DataTransferObjects\EventResultItem.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\Fault.cs">
+      <Link>DataTransferObjects\Fault.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\Playlist.cs">
+      <Link>DataTransferObjects\Playlist.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\PlaylistCollection.cs">
+      <Link>DataTransferObjects\PlaylistCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\PlaylistResultItem.cs">
+      <Link>DataTransferObjects\PlaylistResultItem.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\PlaylistSongsRequest.cs">
+      <Link>DataTransferObjects\PlaylistSongsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\PopularSongsRequest.cs">
+      <Link>DataTransferObjects\PopularSongsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\PopularSongsRequestType.cs">
+      <Link>DataTransferObjects\PopularSongsRequestType.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\RequestToken.cs">
+      <Link>DataTransferObjects\RequestToken.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\RequestTokenHeader.cs">
+      <Link>DataTransferObjects\RequestTokenHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\ResponseToken.cs">
+      <Link>DataTransferObjects\ResponseToken.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\ResponseTokenHeader.cs">
+      <Link>DataTransferObjects\ResponseTokenHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\ResultsFromSearchRequest.cs">
+      <Link>DataTransferObjects\ResultsFromSearchRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\SearchResult.cs">
+      <Link>DataTransferObjects\SearchResult.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\SearchResultItem.cs">
+      <Link>DataTransferObjects\SearchResultItem.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\SearchResultSet.cs">
+      <Link>DataTransferObjects\SearchResultSet.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\SearchType.cs">
+      <Link>DataTransferObjects\SearchType.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\Song.cs">
+      <Link>DataTransferObjects\Song.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\SongCollection.cs">
+      <Link>DataTransferObjects\SongCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\StreamCommandAttribute.cs">
+      <Link>DataTransferObjects\StreamCommandAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\StreamInfo.cs">
+      <Link>DataTransferObjects\StreamInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\StreamKeyFromSongId.cs">
+      <Link>DataTransferObjects\StreamKeyFromSongId.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\User.cs">
+      <Link>DataTransferObjects\User.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\UserPlayListRequest.cs">
+      <Link>DataTransferObjects\UserPlayListRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\UserPrivacyTokens.cs">
+      <Link>DataTransferObjects\UserPrivacyTokens.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\UserResultItem.cs">
+      <Link>DataTransferObjects\UserResultItem.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\datatransferobjects\UseSslAttribute.cs">
+      <Link>DataTransferObjects\UseSslAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\exceptions\GrooveException.cs">
+      <Link>Exceptions\GrooveException.cs</Link>
+    </Compile>
+    <Compile Include="..\GrooveSharp\GrooveConnection.cs">
+      <Link>GrooveConnection.cs</Link>
+    </Compile>
+    <Compile Include="..\GrooveSharp\IGrooveConnection.cs">
+      <Link>IGrooveConnection.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\parser\IParser.cs">
+      <Link>Parser\IParser.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\parser\JsonParser.cs">
+      <Link>Parser\JsonParser.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\protocol\AsyncCommandFactory.cs">
+      <Link>Protocol\AsyncCommandFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\protocol\commands\AsyncCommand.cs">
+      <Link>Protocol\Commands\AsyncCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\protocol\commands\AsyncCommandBase.cs">
+      <Link>Protocol\Commands\AsyncCommandBase.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\protocol\commands\AsyncHandledCommand.cs">
+      <Link>Protocol\Commands\AsyncHandledCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\protocol\commands\DownloadStreamAsyncCommand.cs">
+      <Link>Protocol\Commands\DownloadStreamAsyncCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\protocol\commands\GetSessionIdAsyncCommand.cs">
+      <Link>Protocol\Commands\GetSessionIdAsyncCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\protocol\commands\IAsyncCommand.cs">
+      <Link>Protocol\Commands\IAsyncCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\protocol\DefaultSession.cs">
+      <Link>Protocol\DefaultSession.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\protocol\IAsyncCommandFactory.cs">
+      <Link>Protocol\IAsyncCommandFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\protocol\ISession.cs">
+      <Link>Protocol\ISession.cs</Link>
+    </Compile>
+    <Compile Include="..\groovesharp\protocol\SessionBase.cs">
+      <Link>Protocol\SessionBase.cs</Link>
+    </Compile>
+    <Compile Include="Cryptography\ABCDStruct.cs" />
+    <Compile Include="Cryptography\HashFactory.cs" />
+    <Compile Include="Cryptography\Md5Core.cs" />
+    <Compile Include="Cryptography\Md5Managed.cs" />
+    <Compile Include="DataTransferObjects\GrooveStream.cs" />
+    <Compile Include="PhoneExtensions.cs" />
+    <Compile Include="PlatformExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.2.6.3.862\lib\SL4-WindowsPhone\Autofac.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
