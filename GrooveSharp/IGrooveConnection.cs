@@ -2,6 +2,10 @@
 using GrooveSharp.DataTransferObjects;
 using GrooveSharp.Protocol.Commands;
 
+namespace GrooveSharp.DataTransferObjects
+{
+}
+
 namespace GrooveSharp
 {
     public interface IGrooveConnection
@@ -22,6 +26,8 @@ namespace GrooveSharp
         IAsyncCommand<int> DeletePlaylist(int playlistId, string name);
 
         IAsyncCommand<StreamInfo> GetStreamKeyFromSongId(string songId);
-        IAsyncCommand<GrooveStream> Download(StreamInfo streamInfo);
+        IAsyncCommand<DownloadInfo> MarkSongAsDownloaded(string songId, string streamServerId, string streamKey);
+        IAsyncCommand<GrooveStream> DownloadSong(StreamInfo streamInfo);
+        IAsyncCommand<object> MarkSongAsComplete(string songId, string streamServerId, string streamKey);
     }
 }

@@ -101,6 +101,7 @@
     <Compile Include="DataTransferObjects\User.cs" />
     <Compile Include="DataTransferObjects\UserPlayListRequest.cs" />
     <Compile Include="DataTransferObjects\UserPrivacyTokens.cs" />
+    <Compile Include="DataTransferObjects\DownloadInfo.cs" />
     <Compile Include="GrooveConnection.cs" />
     <Compile Include="Cryptography\HashFactory.cs" />
     <Compile Include="Cryptography\IHashFactory.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Protocol\Commands\GetSessionIdAsyncCommand.cs" />
     <Compile Include="Protocol\Commands\IAsyncCommand.cs" />
     <Compile Include="Protocol\Commands\DownloadStreamAsyncCommand.cs" />
+    <Compile Include="Protocol\Commands\WebResponseExtensions.cs" />
     <Compile Include="Protocol\IAsyncCommandFactory.cs" />
     <Compile Include="Protocol\ISession.cs" />
     <Compile Include="Protocol\DefaultSession.cs" />

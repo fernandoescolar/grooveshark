@@ -162,8 +162,10 @@ namespace GrooveSharp.Demo
             {
                 return;
             }
+            
+            var stream = await con.DownloadSong(streamInfo).ExecuteAsync();
+            await con.MarkSongAsDownloaded(song.SongId, streamInfo.Ip, streamInfo.StreamKey).ExecuteAsync();
 
-            var stream = await con.Download(streamInfo).ExecuteAsync();
             using (var reader = new BinaryReader(stream))
             {
                 try
@@ -178,6 +180,7 @@ namespace GrooveSharp.Demo
                             Console.Write(".");
                         }
 
+                        await con.MarkSongAsComplete(song.SongId, streamInfo.Ip, streamInfo.StreamKey).ExecuteAsync();
                         Console.WriteLine("\nCompleted: " + filename);
                     }
                 }

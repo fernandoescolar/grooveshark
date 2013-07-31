@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using GrooveSharp.DataTransferObjects;
 using GrooveSharp.Protocol;
 using GrooveSharp.Protocol.Commands;
@@ -118,9 +117,32 @@ namespace GrooveSharp
             return command;
         }
 
-        public IAsyncCommand<GrooveStream> Download(StreamInfo streamInfo)
+        /// <summary>
+        /// It's not working and i don't know why. To avoid being banned you should call this before download a song.
+        /// </summary>
+        public IAsyncCommand<DownloadInfo> MarkSongAsDownloaded(string songId, string streamServerId, string streamKey)
+        {
+            var command = this.commandFactory.Create<DownloadInfo, DownloadInfo>("markSongAsDownloadedEx");
+            command.Parameters.StreamServerId = streamServerId;
+            command.Parameters.StreamKey = streamKey;
+            command.Parameters.SongId = int.Parse(songId);
+
+            return command;
+        }
+
+        public IAsyncCommand<GrooveStream> DownloadSong(StreamInfo streamInfo)
         {
             var command = this.commandFactory.Download(streamInfo);
+
+            return command;
+        }
+
+        public IAsyncCommand<object> MarkSongAsComplete(string songId, string streamServerId, string streamKey)
+        {
+            var command = this.commandFactory.Create<DownloadInfo, object>("markSongComplete");
+            command.Parameters.StreamServerId = streamServerId;
+            command.Parameters.StreamKey = streamKey;
+            command.Parameters.SongId = int.Parse(songId); 
 
             return command;
         }
@@ -178,15 +200,3 @@ namespace GrooveSharp
         }
     }
 }
-
-//} null && user.UserId > 0)
-//            {
-//                this.session.SetUser(user);
-//                return true;
-//            }
-
-//            this.session.SetNoUser();
-//            return false;
-//        }
-//    }
-//}

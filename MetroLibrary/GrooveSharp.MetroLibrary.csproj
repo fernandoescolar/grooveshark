@@ -120,6 +120,9 @@
     <Compile Include="..\GrooveSharp\DataTransferObjects\DeletePlaylistRequest.cs">
       <Link>DataTransferObjects\DeletePlaylistRequest.cs</Link>
     </Compile>
+    <Compile Include="..\GrooveSharp\DataTransferObjects\DownloadInfo.cs">
+      <Link>DataTransferObjects\DownloadInfo.cs</Link>
+    </Compile>
     <Compile Include="..\GrooveSharp\DataTransferObjects\EventResultItem.cs">
       <Link>DataTransferObjects\EventResultItem.cs</Link>
     </Compile>
@@ -254,6 +257,7 @@
     <Compile Include="PlatformExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MetroExtensions.cs" />
+    <Compile Include="Protocol\Commands\WebResponseExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Autofac">

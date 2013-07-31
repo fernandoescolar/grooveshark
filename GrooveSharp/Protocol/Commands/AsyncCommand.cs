@@ -15,13 +15,16 @@ namespace GrooveSharp.Protocol.Commands
 
         public AsyncCommand(ISession session, string method) : base(session)
         {
-            this.request = this.RequestDataIsAStreamCommand() ? this.CreateStreamRequestToken(method) : this.CreateRequestToken(method);
+            this.request = RequestDataIsAStreamCommand() ? this.CreateStreamRequestToken(method) : this.CreateRequestToken(method);
         }
 
         protected override WebRequest CreateWebRequest()
         {
-            var webRequest = WebRequest.Create(this.CreateUrl());
+            var webRequest = (HttpWebRequest)WebRequest.Create(this.CreateUrl());
             webRequest.Method = "POST";
+            webRequest.ContentType = "application/json";
+            //webRequest.UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:10.0.12) Gecko/20100101 Firefox/10.0.12 Iceweasel/10.0.12";
+            webRequest.Headers["Accept-Encoding"] = "gzip";
  
             WriteRequest(webRequest);
 
@@ -90,7 +93,7 @@ namespace GrooveSharp.Protocol.Commands
 
         private ResponseToken<TResponseData> CreateResponseToken(WebResponse response)
         {
-            using (var reader = new StreamReader(response.GetResponseStream()))
+            using (var reader = new StreamReader(response.GetStreamForResponse()))
             {
                 var responseContent = reader.ReadToEnd();
                 return this.Session.Parser.GetObjectFromString<ResponseToken<TResponseData>>(responseContent);
@@ -117,7 +120,7 @@ namespace GrooveSharp.Protocol.Commands
             return ObjectTypeHasAttribute(typeof(TRequestData), typeof(UseSslAttribute));
         }
 
-        private bool RequestDataIsAStreamCommand()
+        private static bool RequestDataIsAStreamCommand()
         {
             return ObjectTypeHasAttribute(typeof (TRequestData), typeof (StreamCommandAttribute));
         }
@@ -128,12 +131,4 @@ namespace GrooveSharp.Protocol.Commands
         }
     }
 }
-// attributes = theType.GetCustomAttributes(false);
-//            return attributes.Any(attribute => attribute.GetType() == attributeType);
-//#else
-//            return theType.GetTypeInfo().GetCustomAttribute(attributeType) != null;
-//#endif
-            
-//        }
-//    }
-//}
+
