@@ -164,7 +164,8 @@ namespace GrooveSharp.Demo
             }
             
             var stream = await con.DownloadSong(streamInfo).ExecuteAsync();
-            await con.MarkSongAsDownloaded(song.SongId, streamInfo.Ip, streamInfo.StreamKey).ExecuteAsync();
+            // this call is not working ...
+            //await con.MarkSongAsDownloaded(song.SongId, streamInfo.Ip, streamInfo.StreamKey).ExecuteAsync();
 
             using (var reader = new BinaryReader(stream))
             {
