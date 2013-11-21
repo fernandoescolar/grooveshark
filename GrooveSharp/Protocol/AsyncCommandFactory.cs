@@ -13,11 +13,6 @@ namespace GrooveSharp.Protocol
             this.session = session;
         }
 
-        public IAsyncCommand<string> GetSession()
-        {
-            return new GetSessionIdAsyncCommand(this.session);
-        }
-
         public IAsyncCommand<TRequestData, TResponseData> Create<TRequestData, TResponseData>(string method) where TRequestData : new()
         {
             return new AsyncCommand<TRequestData, TResponseData>(session, method);

@@ -138,7 +138,6 @@
     <Compile Include="Protocol\AsyncCommandFactory.cs" />
     <Compile Include="Protocol\Commands\AsyncCommandBase.cs" />
     <Compile Include="Protocol\Commands\AsyncHandledCommand.cs" />
-    <Compile Include="Protocol\Commands\GetSessionIdAsyncCommand.cs" />
     <Compile Include="Protocol\Commands\IAsyncCommand.cs" />
     <Compile Include="Protocol\Commands\DownloadStreamAsyncCommand.cs" />
     <Compile Include="Protocol\Commands\WebResponseExtensions.cs" />

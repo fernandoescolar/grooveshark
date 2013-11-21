@@ -18,14 +18,6 @@ namespace GrooveSharp
             this.commandFactory = commandFactory;
         }
 
-        public IAsyncCommand<bool> Initialize()
-        {
-            var innerCommand = this.commandFactory.GetSession();
-            var command = this.commandFactory.Create(innerCommand, GetSessionIdHandler);
-
-            return command;
-        }
-
         public IAsyncCommand<bool> Open()
         {
             var innerCommand = this.GetCommunicationToken();

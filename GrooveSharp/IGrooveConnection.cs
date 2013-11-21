@@ -10,7 +10,6 @@ namespace GrooveSharp
 {
     public interface IGrooveConnection
     {
-        IAsyncCommand<bool> Initialize();
         IAsyncCommand<bool> Open();
         IAsyncCommand<bool> Authenticate(string username, string password);
 

@@ -20,6 +20,7 @@ namespace GrooveSharp.Protocol
 
         public DefaultSession(IHashFactory hashFactory, IParser parser) : base(hashFactory, parser)
         {
+            Initialize(Guid.NewGuid().ToString().Replace("-", string.Empty).ToLower());
         }
     }
 }

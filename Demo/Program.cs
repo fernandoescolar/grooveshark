@@ -99,16 +99,13 @@ namespace GrooveSharp.Demo
         private static async Task<bool> InitializeAndLogin(string username, string password)
         {
             var loggedin = false;
-            if (await con.Initialize().ExecuteAsync())
-            {
-                var opened = await con.Open().ExecuteAsync();
-                Console.WriteLine(opened ? "Connected" : "Not connected!");
+            var opened = await con.Open().ExecuteAsync();
+            Console.WriteLine(opened ? "Connected" : "Not connected!");
 
-                if (opened)
-                {
-                    loggedin = await con.Authenticate(username, password).ExecuteAsync();
-                    Console.WriteLine(loggedin ? "Authenticated" : "Unauthenticated!");
-                }
+            if (opened)
+            {
+                loggedin = await con.Authenticate(username, password).ExecuteAsync();
+                Console.WriteLine(loggedin ? "Authenticated" : "Unauthenticated!");
             }
 
             return loggedin;

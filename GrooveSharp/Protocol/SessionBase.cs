@@ -1,4 +1,3 @@
-using System.Net;
 using GrooveSharp.Cryptography;
 using GrooveSharp.DataTransferObjects;
 using GrooveSharp.Parser;
@@ -39,7 +38,7 @@ namespace GrooveSharp.Protocol
         protected abstract string Password { get; }
         protected abstract string StreamPassword { get; }
 
-        public virtual void Initialize(string sessionId)
+        public void Initialize(string sessionId)
         {
             this.SessionId = sessionId;
             this.GetCountry();
@@ -57,7 +56,7 @@ namespace GrooveSharp.Protocol
 
         public string Tokenizer(string method, bool streamMode)
         {
-            var random = "abeasd"; //random lenght 6
+            var random = "abecfd"; //random lenght 6
             var key = method + ":" + token + ":" + (streamMode ? this.StreamPassword : this.Password) + ":" + random;
             return random + this.hashFactory.Sha1(key);
         }
@@ -74,7 +73,7 @@ namespace GrooveSharp.Protocol
 
         private void GetCountry()
         {
-            this.Country = new Country { Id = 65, Cc1 =0, Cc2 = 1, Cc3 = 0, Cc4 = 0, Dma = 0, Ipr = 0 }; //spain??
+            this.Country = new Country { Id = "1", Cc1 = "0", Cc2 = "0", Cc3 = "0", Cc4 = "0", Dma = 0, Ipr = "1" }; //spain??
         }
     }
 }

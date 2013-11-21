@@ -218,9 +218,6 @@
     <Compile Include="..\groovesharp\protocol\commands\DownloadStreamAsyncCommand.cs">
       <Link>Protocol\Commands\DownloadStreamAsyncCommand.cs</Link>
     </Compile>
-    <Compile Include="..\groovesharp\protocol\commands\GetSessionIdAsyncCommand.cs">
-      <Link>Protocol\Commands\GetSessionIdAsyncCommand.cs</Link>
-    </Compile>
     <Compile Include="..\groovesharp\protocol\commands\IAsyncCommand.cs">
       <Link>Protocol\Commands\IAsyncCommand.cs</Link>
     </Compile>
