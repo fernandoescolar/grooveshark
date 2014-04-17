@@ -111,16 +111,13 @@ namespace GrooveSharp
             var command = this.commandFactory.Create<StreamKeyFromSongId, StreamInfo>("getStreamKeyFromSongIDEx");
             command.Parameters.Country = this.session.Country;
             command.Parameters.Mobile = false;
-            command.Parameters.Type = 8;
-            command.Parameters.SongId = songId;
+            command.Parameters.Type = 1024;
+            command.Parameters.SongId = int.Parse(songId);
             command.Parameters.Prefetch = false;
 
             return command;
         }
 
-        /// <summary>
-        /// It's not working and i don't know why. To avoid being banned you should call this before download a song.
-        /// </summary>
         public IAsyncCommand<object> MarkSongAsDownloaded(string songId, string streamServerId, string streamKey)
         {
             var command = this.commandFactory.Create<DownloadInfo, object>("markSongAsDownloadedEx");
@@ -131,27 +128,39 @@ namespace GrooveSharp
             return command;
         }
 
-        public IAsyncCommand<bool> AddSongsToQueue(string songId, string artistId)
+        public IAsyncCommand<bool> AddSongsToQueue(string songId, string artistId, int queueSongId)
         {
             var command = this.commandFactory.Create<AddToQueueRequest, bool>("addSongsToQueue");
             command.Parameters.SongIDsArtistIDs = new [] { new SongAndArtist
                                                             {
-                                                                ArtistId = artistId,
-                                                                SongId = songId,
+                                                                ArtistId = int.Parse(artistId),
+                                                                SongId = int.Parse(songId),
                                                                 Source = "user",
-                                                                SongQueueSongId = 1
+                                                                SongQueueSongId = queueSongId
                                                             }};
             command.Parameters.SongQueueId = this.session.Queue;
 
             return command;
         }
 
-        public IAsyncCommand<bool> RemoveSongsFromQueue()
+        public IAsyncCommand<bool> RemoveSongsFromQueue(int queueSongId)
         {
             var command = this.commandFactory.Create<RemoveFromQueueRequest, bool>("removeSongsFromQueue");
             command.Parameters.UserRemoved = true;
             command.Parameters.SongQueueId = this.session.Queue;
-            command.Parameters.SongQueueSongIDs = new[]{ 1 };
+            command.Parameters.SongQueueSongIDs = new[] { queueSongId };
+
+            return command;
+        }
+
+        public IAsyncCommand<object> MarkQueueSongPlayed(string songId, string streamServerId, string streamKey, int queueSongId)
+        {
+            var command = this.commandFactory.Create<SongPlayedRequest, object>("markSongQueueSongPlayed");
+            command.Parameters.StreamServerId = streamServerId;
+            command.Parameters.StreamKey = streamKey;
+            command.Parameters.SongId = int.Parse(songId);
+            command.Parameters.SongQueueId = this.session.Queue;
+            command.Parameters.SongQueueSongId = queueSongId;
 
             return command;
         }

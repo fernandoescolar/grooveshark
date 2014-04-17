@@ -195,6 +195,9 @@
     <Compile Include="..\GrooveSharp\DataTransferObjects\SongCollection.cs">
       <Link>DataTransferObjects\SongCollection.cs</Link>
     </Compile>
+    <Compile Include="..\GrooveSharp\DataTransferObjects\SongPlayedRequest.cs">
+      <Link>DataTransferObjects\SongPlayedRequest.cs</Link>
+    </Compile>
     <Compile Include="..\GrooveSharp\DataTransferObjects\StreamCommandAttribute.cs">
       <Link>DataTransferObjects\StreamCommandAttribute.cs</Link>
     </Compile>

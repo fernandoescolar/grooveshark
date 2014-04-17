@@ -179,6 +179,9 @@
     <Compile Include="..\groovesharp\datatransferobjects\SongCollection.cs">
       <Link>DataTransferObjects\SongCollection.cs</Link>
     </Compile>
+    <Compile Include="..\GrooveSharp\DataTransferObjects\SongPlayedRequest.cs">
+      <Link>DataTransferObjects\SongPlayedRequest.cs</Link>
+    </Compile>
     <Compile Include="..\groovesharp\datatransferobjects\StreamCommandAttribute.cs">
       <Link>DataTransferObjects\StreamCommandAttribute.cs</Link>
     </Compile>

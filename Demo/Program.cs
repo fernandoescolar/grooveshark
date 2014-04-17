@@ -152,9 +152,11 @@ namespace GrooveSharp.Demo
             }
         }
 
+        private static int queueSongId = 0;
         private static async Task DownloadSong(Song song, string filename)
         {
-            var added = await con.AddSongsToQueue(song.SongId, song.ArtistId).ExecuteAsync();
+            queueSongId++;
+            var added = await con.AddSongsToQueue(song.SongId, song.ArtistId, queueSongId).ExecuteAsync();
             var streamInfo = await con.GetStreamKeyFromSongId(song.SongId).ExecuteAsync();
 
             Console.WriteLine("StreamKey = " + streamInfo.StreamKey);
@@ -170,13 +172,15 @@ namespace GrooveSharp.Demo
 
                 if (added)
                 {
-                    await con.RemoveSongsFromQueue().ExecuteAsync();
+                    await con.RemoveSongsFromQueue(queueSongId).ExecuteAsync();
                 }
 
                 return;
             }
 
             var stream = await con.DownloadSong(streamInfo).ExecuteAsync();
+            await con.MarkSongAsDownloaded(song.SongId, streamInfo.Ip, streamInfo.StreamKey).ExecuteAsync();
+            await con.MarkQueueSongPlayed(song.SongId, streamInfo.Ip, streamInfo.StreamKey, queueSongId).ExecuteAsync();
             using (var reader = new BinaryReader(stream))
             {
                 try
@@ -197,7 +201,7 @@ namespace GrooveSharp.Demo
                         }
                     }
 
-                    await con.MarkSongAsDownloaded(song.SongId, streamInfo.Ip, streamInfo.StreamKey).ExecuteAsync();
+                   
                     Console.WriteLine("\nCompleted: " + filename);
                 }
                 catch (Exception ex)
@@ -208,7 +212,7 @@ namespace GrooveSharp.Demo
                 {
                     if (added)
                     {
-                        con.RemoveSongsFromQueue().ExecuteAsync();
+                        con.RemoveSongsFromQueue(queueSongId).ExecuteAsync();
                     }
                 }
             }

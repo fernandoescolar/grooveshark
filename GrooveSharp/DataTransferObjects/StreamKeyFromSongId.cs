@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace GrooveSharp.DataTransferObjects
 {
@@ -17,7 +16,7 @@ namespace GrooveSharp.DataTransferObjects
         public int Type { get; set; }
 
         [DataMember(Name = "songID")]
-        public string SongId { get; set; }
+        public int SongId { get; set; }
 
         [DataMember(Name = "prefetch")]
         public bool Prefetch { get; set; }

@@ -103,6 +103,7 @@
     <Compile Include="DataTransferObjects\Playlist.cs" />
     <Compile Include="DataTransferObjects\PlaylistSongsRequest.cs" />
     <Compile Include="DataTransferObjects\Song.cs" />
+    <Compile Include="DataTransferObjects\SongPlayedRequest.cs" />
     <Compile Include="DataTransferObjects\User.cs" />
     <Compile Include="DataTransferObjects\UserPlayListRequest.cs" />
     <Compile Include="DataTransferObjects\UserPrivacyTokens.cs" />

@@ -27,8 +27,9 @@ namespace GrooveSharp
 
         IAsyncCommand<StreamInfo> GetStreamKeyFromSongId(string songId);
         IAsyncCommand<object> MarkSongAsDownloaded(string songId, string streamServerId, string streamKey);
-        IAsyncCommand<bool> AddSongsToQueue(string songId, string artistId);
-        IAsyncCommand<bool> RemoveSongsFromQueue();
+        IAsyncCommand<bool> AddSongsToQueue(string songId, string artistId, int queueSongId);
+        IAsyncCommand<bool> RemoveSongsFromQueue(int queueSongId);
+        IAsyncCommand<object> MarkQueueSongPlayed(string songId, string streamServerId, string streamKey, int queueSongId);
         IAsyncCommand<GrooveStream> DownloadSong(StreamInfo streamInfo);
         IAsyncCommand<object> MarkStreamKeyOver30Seconds(string songId, string artistId, string streamServerId, string streamKey);
     }

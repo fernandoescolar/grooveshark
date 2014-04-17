@@ -79,7 +79,7 @@ namespace GrooveSharp.Protocol
 
         private void GetCountry()
         {
-            this.Country = new Country { Id = "1", Cc1 = "0", Cc2 = "0", Cc3 = "0", Cc4 = "0", Dma = 0, Ipr = "1" }; //spain??
+            this.Country = new Country { Id = "65", Cc1 = "0", Cc2 = "1", Cc3 = "0", Cc4 = "0", Dma = 0, Ipr = "0" }; //spain??
         }
     }
 }
