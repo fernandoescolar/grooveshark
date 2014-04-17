@@ -71,6 +71,9 @@
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>GrooveSharp.Demo.SearchProgram</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="StructureMap">
       <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
@@ -94,6 +97,7 @@
     <Compile Include="FeedManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchProgram.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
