@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using GrooveSharp.DataTransferObjects;
 using StructureMap;
@@ -106,6 +107,10 @@ namespace GrooveSharp.Demo
             {
                 loggedin = await con.Authenticate(username, password).ExecuteAsync();
                 Console.WriteLine(loggedin ? "Authenticated" : "Unauthenticated!");
+                if (loggedin)
+                {
+                    var result = await con.InitiateQueue().ExecuteAsync();
+                }
             }
 
             return loggedin;
@@ -149,6 +154,7 @@ namespace GrooveSharp.Demo
 
         private static async Task DownloadSong(Song song, string filename)
         {
+            var added = await con.AddSongsToQueue(song.SongId, song.ArtistId).ExecuteAsync();
             var streamInfo = await con.GetStreamKeyFromSongId(song.SongId).ExecuteAsync();
 
             Console.WriteLine("StreamKey = " + streamInfo.StreamKey);
@@ -157,36 +163,63 @@ namespace GrooveSharp.Demo
 
             if (string.IsNullOrEmpty(streamInfo.StreamKey))
             {
+                var color = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Could not download, maybe you have been banned. Try it again in an hour...");
+                Console.ForegroundColor = color;
+
+                if (added)
+                {
+                    await con.RemoveSongsFromQueue().ExecuteAsync();
+                }
+
                 return;
             }
-            
-            var stream = await con.DownloadSong(streamInfo).ExecuteAsync();
-            // this call is not working ...
-            //await con.MarkSongAsDownloaded(song.SongId, streamInfo.Ip, streamInfo.StreamKey).ExecuteAsync();
 
+            var stream = await con.DownloadSong(streamInfo).ExecuteAsync();
             using (var reader = new BinaryReader(stream))
             {
                 try
                 {
-                    using (var writter = new BinaryWriter(File.OpenWrite(filename)))
+                    using (
+                        new Timer(Mark30SecondsCallback, new object[] {streamInfo, song},
+                            TimeSpan.FromSeconds(30).Milliseconds, -1))
                     {
-                        var buffer = new byte[2048];
-                        var read = 0;
-                        while ((read = reader.Read(buffer, 0, 2048)) > 0)
+                        using (var writter = new BinaryWriter(File.OpenWrite(filename)))
                         {
-                            writter.Write(buffer, 0, read);
-                            Console.Write(".");
+                            var buffer = new byte[2048];
+                            var read = 0;
+                            while ((read = reader.Read(buffer, 0, 2048)) > 0)
+                            {
+                                writter.Write(buffer, 0, read);
+                                Console.Write(".");
+                            }
                         }
-
-                        await con.MarkSongAsComplete(song.SongId, streamInfo.Ip, streamInfo.StreamKey).ExecuteAsync();
-                        Console.WriteLine("\nCompleted: " + filename);
                     }
+
+                    await con.MarkSongAsDownloaded(song.SongId, streamInfo.Ip, streamInfo.StreamKey).ExecuteAsync();
+                    Console.WriteLine("\nCompleted: " + filename);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Error Downloading: " + song + " - " + ex.Message);
                 }
+                finally
+                {
+                    if (added)
+                    {
+                        con.RemoveSongsFromQueue().ExecuteAsync();
+                    }
+                }
             }
+        }
+
+        private static void Mark30SecondsCallback(object state)
+        {
+            var streamInfo = (StreamInfo)((object[])state)[0];
+            var song = (Song)((object[])state)[1];
+            
+            con.MarkStreamKeyOver30Seconds(song.SongId, song.ArtistId, streamInfo.Ip, streamInfo.StreamKey).ExecuteAsync();
         }
 
         private static void CheckFileFolder(string filename)

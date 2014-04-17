@@ -105,6 +105,9 @@
     <Compile Include="..\GrooveSharp\Cryptography\IHashFactory.cs">
       <Link>Cryptography\IHashFactory.cs</Link>
     </Compile>
+    <Compile Include="..\GrooveSharp\DataTransferObjects\AddToQueueRequest.cs">
+      <Link>DataTransferObjects\AddToQueueRequest.cs</Link>
+    </Compile>
     <Compile Include="..\GrooveSharp\DataTransferObjects\AuthenticateUserRequest.cs">
       <Link>DataTransferObjects\AuthenticateUserRequest.cs</Link>
     </Compile>
@@ -123,11 +126,17 @@
     <Compile Include="..\GrooveSharp\DataTransferObjects\DownloadInfo.cs">
       <Link>DataTransferObjects\DownloadInfo.cs</Link>
     </Compile>
+    <Compile Include="..\GrooveSharp\DataTransferObjects\DummyStreamData.cs">
+      <Link>DataTransferObjects\DummyStreamData.cs</Link>
+    </Compile>
     <Compile Include="..\GrooveSharp\DataTransferObjects\EventResultItem.cs">
       <Link>DataTransferObjects\EventResultItem.cs</Link>
     </Compile>
     <Compile Include="..\GrooveSharp\DataTransferObjects\Fault.cs">
       <Link>DataTransferObjects\Fault.cs</Link>
+    </Compile>
+    <Compile Include="..\GrooveSharp\DataTransferObjects\MarkOver30SecondsRequest.cs">
+      <Link>DataTransferObjects\MarkOver30SecondsRequest.cs</Link>
     </Compile>
     <Compile Include="..\GrooveSharp\DataTransferObjects\Playlist.cs">
       <Link>DataTransferObjects\Playlist.cs</Link>
@@ -146,6 +155,9 @@
     </Compile>
     <Compile Include="..\GrooveSharp\DataTransferObjects\PopularSongsRequestType.cs">
       <Link>DataTransferObjects\PopularSongsRequestType.cs</Link>
+    </Compile>
+    <Compile Include="..\GrooveSharp\DataTransferObjects\RemoveFromQueueRequest.cs">
+      <Link>DataTransferObjects\RemoveFromQueueRequest.cs</Link>
     </Compile>
     <Compile Include="..\GrooveSharp\DataTransferObjects\RequestToken.cs">
       <Link>DataTransferObjects\RequestToken.cs</Link>
@@ -176,6 +188,9 @@
     </Compile>
     <Compile Include="..\GrooveSharp\DataTransferObjects\Song.cs">
       <Link>DataTransferObjects\Song.cs</Link>
+    </Compile>
+    <Compile Include="..\GrooveSharp\DataTransferObjects\SongAndArtist.cs">
+      <Link>DataTransferObjects\SongAndArtist.cs</Link>
     </Compile>
     <Compile Include="..\GrooveSharp\DataTransferObjects\SongCollection.cs">
       <Link>DataTransferObjects\SongCollection.cs</Link>

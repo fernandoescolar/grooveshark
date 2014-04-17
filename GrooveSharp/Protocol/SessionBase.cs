@@ -31,6 +31,7 @@ namespace GrooveSharp.Protocol
 
         public User User { get; protected set; }
         public bool IsAuthenticated { get { return this.User != null; } }
+        public string Queue { get; protected set; }
 
         public IHashFactory HashFactory { get { return this.hashFactory; } }
         public IParser Parser { get { return this.parser; } }
@@ -69,6 +70,11 @@ namespace GrooveSharp.Protocol
         public void SetNoUser()
         {
             this.User = null;
+        }
+
+        public void SetQueue(string queue)
+        {
+            this.Queue = queue;
         }
 
         private void GetCountry()

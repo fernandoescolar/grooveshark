@@ -19,14 +19,17 @@ namespace GrooveSharp.Protocol
         User User { get; }
         bool IsAuthenticated { get; }
 
+        string Queue { get; }
+
         IHashFactory HashFactory { get; }
         IParser Parser { get; }
-
+        
         void Initialize(string sessionId);
         void SetSessionToken(string token);
         string Tokenizer(string method);
         string Tokenizer(string method, bool streamMode);
         void SetUser(User user);
         void SetNoUser();
+        void SetQueue(string queue);
     }
 }

@@ -34,6 +34,15 @@ namespace GrooveSharp
             return command;
         }
 
+        public IAsyncCommand<bool> InitiateQueue()
+        {
+            var innerCommand = this.commandFactory.Create<DummyStreamData, string>("initiateQueue");
+            var command = this.commandFactory.Create(innerCommand, InitiateQueueHandler);
+
+            return command;
+        }
+
+
         public IAsyncCommand<SearchResult> GetResultsFromSearch(string queryString)
         {
             return GetResultsFromSearch(queryString, SearchType.Songs | SearchType.Albums | SearchType.Artists);
@@ -112,12 +121,37 @@ namespace GrooveSharp
         /// <summary>
         /// It's not working and i don't know why. To avoid being banned you should call this before download a song.
         /// </summary>
-        public IAsyncCommand<DownloadInfo> MarkSongAsDownloaded(string songId, string streamServerId, string streamKey)
+        public IAsyncCommand<object> MarkSongAsDownloaded(string songId, string streamServerId, string streamKey)
         {
-            var command = this.commandFactory.Create<DownloadInfo, DownloadInfo>("markSongAsDownloadedEx");
+            var command = this.commandFactory.Create<DownloadInfo, object>("markSongAsDownloadedEx");
             command.Parameters.StreamServerId = streamServerId;
             command.Parameters.StreamKey = streamKey;
             command.Parameters.SongId = int.Parse(songId);
+
+            return command;
+        }
+
+        public IAsyncCommand<bool> AddSongsToQueue(string songId, string artistId)
+        {
+            var command = this.commandFactory.Create<AddToQueueRequest, bool>("addSongsToQueue");
+            command.Parameters.SongIDsArtistIDs = new [] { new SongAndArtist
+                                                            {
+                                                                ArtistId = artistId,
+                                                                SongId = songId,
+                                                                Source = "user",
+                                                                SongQueueSongId = 1
+                                                            }};
+            command.Parameters.SongQueueId = this.session.Queue;
+
+            return command;
+        }
+
+        public IAsyncCommand<bool> RemoveSongsFromQueue()
+        {
+            var command = this.commandFactory.Create<RemoveFromQueueRequest, bool>("removeSongsFromQueue");
+            command.Parameters.UserRemoved = true;
+            command.Parameters.SongQueueId = this.session.Queue;
+            command.Parameters.SongQueueSongIDs = new[]{ 1 };
 
             return command;
         }
@@ -129,12 +163,15 @@ namespace GrooveSharp
             return command;
         }
 
-        public IAsyncCommand<object> MarkSongAsComplete(string songId, string streamServerId, string streamKey)
+        public IAsyncCommand<object> MarkStreamKeyOver30Seconds(string songId, string artistId, string streamServerId, string streamKey)
         {
-            var command = this.commandFactory.Create<DownloadInfo, object>("markSongComplete");
+            var command = this.commandFactory.Create<MarkOver30SecondsRequest, object>("markStreamKeyOver30Seconds");
             command.Parameters.StreamServerId = streamServerId;
             command.Parameters.StreamKey = streamKey;
-            command.Parameters.SongId = int.Parse(songId); 
+            command.Parameters.SongId = int.Parse(songId);
+            command.Parameters.ArtistId = int.Parse(artistId);
+            command.Parameters.SongQueueId = this.session.Queue;
+            command.Parameters.SongQueueSongId = 1;
 
             return command;
         }
@@ -188,6 +225,17 @@ namespace GrooveSharp
             }
 
             this.session.SetNoUser();
+            return false;
+        }
+
+        private bool InitiateQueueHandler(string queue)
+        {
+            if (!string.IsNullOrEmpty(queue))
+            {
+                this.session.SetQueue(queue);
+                return true;
+            }
+
             return false;
         }
     }

@@ -90,9 +90,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\GrooveModule.cs" />
+    <Compile Include="DataTransferObjects\AddToQueueRequest.cs" />
     <Compile Include="DataTransferObjects\AuthenticateUserRequest.cs" />
     <Compile Include="DataTransferObjects\CreatePlaylistRequest.cs" />
     <Compile Include="DataTransferObjects\DeletePlaylistRequest.cs" />
+    <Compile Include="DataTransferObjects\DummyStreamData.cs" />
+    <Compile Include="DataTransferObjects\MarkOver30SecondsRequest.cs" />
+    <Compile Include="DataTransferObjects\RemoveFromQueueRequest.cs" />
+    <Compile Include="DataTransferObjects\SongAndArtist.cs" />
     <Compile Include="DataTransferObjects\SongCollection.cs" />
     <Compile Include="DataTransferObjects\PlaylistCollection.cs" />
     <Compile Include="DataTransferObjects\Playlist.cs" />
