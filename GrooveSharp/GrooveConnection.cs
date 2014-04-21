@@ -120,7 +120,7 @@ namespace GrooveSharp
 
         public IAsyncCommand<object> MarkSongAsDownloaded(string songId, string streamServerId, string streamKey)
         {
-            var command = this.commandFactory.Create<DownloadInfo, object>("markSongAsDownloadedEx");
+            var command = this.commandFactory.Create<DownloadInfo, object>("markSongDownloadedEx");
             command.Parameters.StreamServerId = streamServerId;
             command.Parameters.StreamKey = streamKey;
             command.Parameters.SongId = int.Parse(songId);
